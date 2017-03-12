@@ -12,5 +12,8 @@
   "dependencies": {
     "express": "^4.15.2",
     "robotjs": "^0.4.5"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
   }
 }
