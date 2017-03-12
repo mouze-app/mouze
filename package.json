@@ -1,0 +1,12 @@
+{
+  "name": "Mouze",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/mouze-app/mouze",
+  "author": "Hum4n01d <hum4n01d@icloud.com>",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.15.2",
+    "robotjs": "^0.4.5"
+  }
+}
