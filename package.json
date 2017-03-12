@@ -7,6 +7,7 @@
     "license": "MIT",
     "scripts": {
         "build": "babel server/server.js --out-file ./bundled-server.js --presets es2015",
+        "prestart": "yarn build",
         "start": "node bundled-server.js",
 
         "dev-server": "nodemon server.js --exec babel-node --presets es2015",
