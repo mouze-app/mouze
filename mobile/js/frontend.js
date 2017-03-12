@@ -1,4 +1,5 @@
-var io = io.connect('http://mouze.herokuapp.com/')
+// var io = io.connect('http://mouze.herokuapp.com/')
+var io = io.connect('http://localhost:3000')
 
 var el = document.getElementById("left")
 var er = document.getElementById("right")
