@@ -5,6 +5,10 @@
   "repository": "https://github.com/mouze-app/mouze",
   "author": "Hum4n01d <hum4n01d@icloud.com>",
   "license": "MIT",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
   "dependencies": {
     "express": "^4.15.2",
     "robotjs": "^0.4.5"
