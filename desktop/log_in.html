@@ -12,20 +12,6 @@
         </form>
 
         <script src="http://localhost:3000/socket.io/socket.io.js" charset="utf-8"></script>
-        <script type="text/javascript">
-            const socket = io.connect("http://localhost:3000")
-            const form = document.getElementById("id-form")
-
-            form.addEventListener("submit", e => {
-                e.preventDefault()
-
-                const idEntered = document.querySelector('form > input').value
-                console.log(`attempting to join ${idEntered}`);
-
-                socket.emit('joinRoom', idEntered)
-            })
-
-            socket.on('event', (data) => console.log(data))
-        </script>
+        <script src="log_in.js" type="text/javascript"></script>
     </body>
 </html>

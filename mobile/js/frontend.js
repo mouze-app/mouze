@@ -24,8 +24,8 @@ function handleEnd(e) {
   e.target.classList.remove("dark")
 }
 
-var left = 0
-var toppos = 0
+var left = 100
+var toppos = 100
 var zee = 0
 
 window.addEventListener('devicemotion', function(event) {
@@ -55,10 +55,27 @@ window.addEventListener('devicemotion', function(event) {
   mouse.style.top = toppos + 200;
 });
 
+function leftDown() {
+
+}
+function leftUp() {
+
+}
+function rightDown() {
+
+}
+function rightUp() {
+
+}
+
 el.addEventListener("touchstart", handleStart, false);
+el.addEventListener("touchend", leftDown, false);
 el.addEventListener("touchend", handleEnd, false);
+el.addEventListener("touchend", leftUp, false);
 er.addEventListener("touchstart", handleStart, false);
+er.addEventListener("touchstart", rightDown, false);
 er.addEventListener("touchend", handleEnd, false);
+er.addEventListener("touchstart", rightUp, false);
 
 calibrate.addEventListener("touchstart", handleStart, false);
 calibrate.addEventListener("touchend", handleEnd, false);
