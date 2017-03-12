@@ -6,8 +6,8 @@
     "author": "Hum4n01d <hum4n01d@icloud.com>",
     "license": "MIT",
     "scripts": {
-        "build": "babel server/server.js --out-file ./bundle.js --presets es2015",
-        "start": "node bundle.js",
+        "build": "babel server/server.js --out-file ./bundled-server.js --presets es2015",
+        "start": "node bundled-server.js",
 
         "dev-server": "nodemon server.js --exec babel-node --presets es2015",
         "electron": "electron desktop/desktop_client.js",

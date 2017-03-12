@@ -1,4 +1,4 @@
-//var io = io()
+var io = io.connect('http://mouze.herokuapp.com/')
 
 var el = document.getElementById("left")
 var er = document.getElementById("right")
