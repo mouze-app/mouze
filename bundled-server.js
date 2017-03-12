@@ -23,6 +23,7 @@ var app = (0, _express2.default)(); // Create express app
 // Imports
 var server = _http2.default.createServer(app); // Create HTTP server with the Nodejs http lib
 var io = require("socket.io")(server);
+var PORT = process.env.PORT || 3000;
 
 // Socket.io stuff
 io.on('connection', function (socket) {
@@ -48,7 +49,7 @@ app.get('/', function (req, res) {
 });
 
 // Start HTTP server
-server.listen('3000', '0.0.0.0', function (data) {
+server.listen(PORT, '0.0.0.0', function (data) {
     // Address data
     var address = server.address();
 
