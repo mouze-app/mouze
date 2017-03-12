@@ -3,23 +3,32 @@
     <title>Mouze Mobile</title>
     <style>
       body {
-        background: #333;
+        background: linear-gradient(#333, black);
+      }
+      .flexcontainer {
+        display: flex;
       }
       div.button {
-        height: 600px;
-        width: 300px;
+        flex-grow: 1;
+        height: 100px;
+        width: 50px;
         background: linear-gradient(white, #eee);
         border-radius: 10px;
         margin: 20px;
-        margin-top: 250px;
+        margin-top: 150px;
+        box-shadow: 0px 2px 4px black;
       }
-      div.right {
-        float: right;
+      div.button.dark {
+        background: linear-gradient(#bbb, #aaa);
       }
     </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
   </head>
   <body>
-    <div class="button right"></div>
-    <div class="button"></div>
+    <div class="flexcontainer">
+      <div class="button" id="left"></div>
+      <div class="button" id="right"></div>
+    </div>
+    <script src="/js/frontend.js"></script>
   </body>
 </html>
