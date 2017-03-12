@@ -6,7 +6,7 @@
     "author": "Hum4n01d <hum4n01d@icloud.com>",
     "license": "MIT",
     "scripts": {
-        "build": "babel server/server.js --out-file ./bundled-server.js --presets es2015",
+        "build": "babel server.js --out-file ./bundled-server.js --presets es2015",
         "prestart": "npm run build",
         "start": "node bundled-server.js",
 
