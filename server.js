@@ -1,11 +1,15 @@
 // Imports
-const robot = require("robotjs")
-const http = require('http')
-const express = require('express')
+import http from "http"
+import express from "express"
+import robot from "robotjs"
 
 // Variables/Constants
 const app = express() // Create express app
 const server = http.createServer(app) // Create HTTP server with the Nodejs http lib
+// const io = socketio(server)
+
+// Set up express
+app.use(express.static('public')) // Static file serving
 
 //Robotjs Code
 robot.setMouseDelay(2); // Speed up the mouse.
@@ -44,3 +48,10 @@ server.listen('3000', '0.0.0.0', (data) => {
     // Console message with port and host
     console.log(`Listening at ${address.address}:${address.port}`)
 })
+
+// Socket.io stuff
+// io.on('connection', socket => {
+//   console.log('a user connected')
+// })
+
+export default server
