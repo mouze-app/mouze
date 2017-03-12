@@ -15,9 +15,24 @@ app.get('/', (req, res) => {
     res.send('Home page')
 })
 
-app.get('/move/to/', (req, res) => {
-    let args = req.query // Save GET parameters
+// Move mouse
+app.get('/move/:x/:y', (req, res) => {
+    let args = req.params // Save GET parameters
     robot.moveMouse(args.x, args.y)
+    res.send(args)
+})
+
+// Type with keyboard
+app.get('/type/:text', (req, res) => {
+    let args = req.params // Save GET parameters
+    robot.typeString(args.text)
+    res.send(args)
+})
+
+//Click
+app.get('/click/', (req, res) => {
+    let args = req.params // Save GET parameters
+    robot.mouseClick()
     res.send(args)
 })
 
