@@ -12,7 +12,7 @@ robot.setMouseDelay(2); // Speed up the mouse.
 
 // Express routes
 app.get('/', (req, res) => {
-    res.send('Home page')
+    res.sendFile(__dirname + 'templates/index.html')
 })
 
 // Move mouse
