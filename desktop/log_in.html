@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Mouze - Log in</title>
+    </head>
+    <body>
+        <p>Enter your id:</p>
+        <form id="id-form">
+            <input type="text"/>
+            <button type="submit">Go</button>
+        </form>
+
+        <script src="http://localhost:3000/socket.io/socket.io.js" charset="utf-8"></script>
+        <script type="text/javascript">
+            const socket = io.connect("http://localhost:3000")
+            const form = document.getElementById("id-form")
+
+            form.addEventListener("submit", e => {
+                e.preventDefault()
+
+                const idEntered = document.querySelector('form > input').value
+                console.log(`attempting to join ${idEntered}`);
+
+                socket.emit('joinRoom', idEntered)
+            })
+
+            socket.on('event', (data) => console.log(data))
+        </script>
+    </body>
+</html>

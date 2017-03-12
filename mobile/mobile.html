@@ -1,0 +1,115 @@
+<html>
+  <head>
+    <title>Mouze Mobile</title>
+    <meta name="theme-color" content="#333">
+    <style>
+      .noselect {
+        -webkit-touch-callout: none; /* iOS Safari */
+          -webkit-user-select: none; /* Safari */
+           -khtml-user-select: none; /* Konqueror HTML */
+             -moz-user-select: none; /* Firefox */
+              -ms-user-select: none; /* Internet Explorer/Edge */
+                  user-select: none; /* Non-prefixed version, currently
+                                        supported by Chrome and Opera */
+      }
+      body {
+        background: linear-gradient(#333, black);
+        font-family: "Roboto",sans-serif;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      .flexcontainer {
+        display: flex;
+        flex-grow: 1;
+        padding-top: 10px;
+      }
+      div.button {
+        flex-grow: 1;
+        height: 100px;
+        /*width: 50px;*/
+        background: linear-gradient(white, #eee);
+        border-radius: 10px;
+        margin: 20px;
+        height: auto;
+        /*margin-top: 150px;*/
+        box-shadow: 0px 2px 4px black;
+      }
+      div.button.dark {
+        background: linear-gradient(#bbb, #aaa);
+      }
+      .flex {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+      }
+      .flex.first {
+        display: none;
+      }
+      .flexstart {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+      }
+      .flexstart.first {
+        display: none;
+      }
+      .space {
+        flex-grow: 1;
+      }
+      .darkbutton {
+        margin: 20px;
+        padding: 18px;
+        background: #222;
+        color: white;
+        text-align: center;
+        border-radius: 4px;
+      }
+      .darkbutton.dark {
+        background: #333;
+      }
+      p, h2 {
+        padding-left: 20px;
+        color: rgba(255,255,255,0.5);
+      }
+      h2 {
+        color: white;
+      }
+      #mouse {
+        background: red;
+        width: 16px;
+        height: 16px;
+        position: absolute;
+      }
+    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+  </head>
+  <body>
+    <div id="mouse"></div>
+
+    <div class="flexstart" id="flexstart">
+        <div class="space"></div>
+        <div>
+          <p>Go to domain.com/start on your computer</p>
+          <p>Run the downloaded file and enter this ID:</p>
+          <h2>SuperVortexFat</h2>
+        </div>
+        <div class="space"></div>
+    </div>
+
+    <div class="flex first" id="flex">
+      <!--<img src="/logo.png" width="200" height="auto"/>-->
+      <div class="flexcontainer">
+        <div class="button" id="left"></div>
+        <div class="button" id="right"></div>
+      </div>
+      <div>
+        <p id="statusLabel">Sorry, your device does not support<br>the Device Orientation API.<br><br>Mouze is not compatible.</p>
+        <div class="darkbutton noselect" id="calibrate">CALIBRATE</div>
+      </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.min.js"></script>
+    <script src="/js/frontend.js"></script>
+  </body>
+</html>
