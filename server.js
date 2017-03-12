@@ -7,6 +7,7 @@ import robot from "robotjs"
 const app = express() // Create express app
 const server = http.createServer(app) // Create HTTP server with the Nodejs http lib
 const io = require("socket.io")(server)
+const PORT = process.env.PORT || 3000
 
 // Socket.io stuff
 io.on('connection', (socket) => {
@@ -32,7 +33,7 @@ app.get('/', (req, res) => {
 })
 
 // Start HTTP server
-server.listen('3000', '0.0.0.0', (data) => {
+server.listen(PORT, '0.0.0.0', (data) => {
     // Address data
     const address = server.address()
 
