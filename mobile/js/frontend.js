@@ -39,24 +39,46 @@ var left = 100
 var toppos = 100
 var zee = 0
 
+let lastPosX = []
+let lastPosY = []
+let average = 0
+
 window.addEventListener('devicemotion', function(event) {
   if (event.acceleration.z > -0.3 && event.acceleration.z < 0.3) {
     let a = 100
     let amount = -20
     let x = Math.round(event.acceleration.x*a)/a*amount
     let y = Math.round(event.acceleration.y*a)/a*amount
-    if (event.acceleration.x > 0.5) {
+
+    lastPosX.push(event.acceleration.x)
+    lastPosY.push(event.acceleration.y)
+
+    if (lastPosX.length > 5) {
+        let sum = 0
+        lastPosX.map(x => sum += x)
+        average = sum/5
+        lastPosX = []
+    }
+
+    if (lastPosX.length > 5) {
+        let sum = 0
+        lastPosX.map(x => sum += x)
+        average = sum/5
+        lastPosX = []
+    }
+
+    if (event.acceleration.x > 0.3) {
       //left += (event.acceleration.x * -1)*4;
       left += x
     }
-    if (event.acceleration.x < -0.5) {
+    if (event.acceleration.x < -0.3) {
       left += x
     }
-    if (event.acceleration.y > 0.5) {
+    if (event.acceleration.y > 0.3) {
       //toppos += (event.acceleration.y)*8;
       toppos -= y
     }
-    if (event.acceleration.y < -0.5) {
+    if (event.acceleration.y < -0.3) {
       toppos -= y
     }
   }
@@ -65,7 +87,7 @@ window.addEventListener('devicemotion', function(event) {
   } else {
     zee += event.acceleration.z*8
   }
-  lb.innerText = left;
+  lb.innerText = average;
   mouse.style.left = left + 200;
   mouse.style.top = toppos + 200;
 
