@@ -41,19 +41,23 @@ var zee = 0
 
 window.addEventListener('devicemotion', function(event) {
   if (event.acceleration.z > -0.3 && event.acceleration.z < 0.3) {
+    let a = 100
+    let amount = -20
+    let x = Math.round(event.acceleration.x*a)/a*amount
+    let y = Math.round(event.acceleration.y*a)/a*amount
     if (event.acceleration.x > 0.5) {
       //left += (event.acceleration.x * -1)*4;
-      left -= 12
+      left += x
     }
     if (event.acceleration.x < -0.5) {
-      left += 12
+      left += x
     }
     if (event.acceleration.y > 0.5) {
       //toppos += (event.acceleration.y)*8;
-      toppos += 12
+      toppos -= y
     }
     if (event.acceleration.y < -0.5) {
-      toppos -= 12
+      toppos -= y
     }
   }
   if (event.acceleration.z < 0) {
@@ -61,7 +65,7 @@ window.addEventListener('devicemotion', function(event) {
   } else {
     zee += event.acceleration.z*8
   }
-  lb.innerText = "Connected";
+  lb.innerText = left;
   mouse.style.left = left + 200;
   mouse.style.top = toppos + 200;
 
