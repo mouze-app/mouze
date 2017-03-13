@@ -53,6 +53,10 @@ window.addEventListener('devicemotion', function(event) {
     lastPosX.push(event.acceleration.x)
     lastPosY.push(event.acceleration.y)
 
+    if (lastPosX[lastPosX.length-1] < 0 && event.acceleration.x > 0) {
+        x = 0
+    }
+
     if (lastPosX.length > 5) {
         let sum = 0
         lastPosX.map(x => sum += x)
