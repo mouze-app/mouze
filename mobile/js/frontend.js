@@ -1,5 +1,15 @@
-// var io = io.connect('http://mouze.herokuapp.com/')
-var io = io.connect('http://localhost:5000')
+// var socket = io.connect('http://mouze.herokuapp.com/')
+var socket = io.connect('http://172.20.10.2:5000')
+
+var userAgent = window.navigator.userAgent;
+var modifier
+
+if (userAgent.match(/iPad/i) || userAgent.match(/iPhone/i)) {
+   modifier = -1
+}
+else {
+   modifier = 1
+}
 
 var el = document.getElementById("left")
 var er = document.getElementById("right")
@@ -11,9 +21,6 @@ var fls = document.getElementById("flexstart")
 
 var lb = document.getElementById("statusLabel")
 var mouse = document.getElementById("mouse")
-
-let theCode = prompt("What do you want your room code to be?")
-io.emit('joinRoom', theCode)
 
 fl.classList.remove("first")
 fls.classList.add("first")
@@ -36,10 +43,10 @@ window.addEventListener('devicemotion', function(event) {
   if (event.acceleration.z > -0.3 && event.acceleration.z < 0.3) {
     if (event.acceleration.x > 0.5) {
       //left += (event.acceleration.x * -1)*4;
-      left -= 8
+      left -= 12
     }
     if (event.acceleration.x < -0.5) {
-      left += 8
+      left += 12
     }
     if (event.acceleration.y > 0.5) {
       //toppos += (event.acceleration.y)*8;
@@ -57,23 +64,34 @@ window.addEventListener('devicemotion', function(event) {
   lb.innerText = "Connected";
   mouse.style.left = left + 200;
   mouse.style.top = toppos + 200;
+
+  if (left < 1) {
+      left = 1
+  }
+
+  if (toppos < 1) {
+      toppos = 1
+  }
+
+  socket.emit('x', left)
+  socket.emit('y', toppos)
 });
 
 function leftDown() {
-
+    socket.emit('leftDown')
 }
 function leftUp() {
-
+    socket.emit('leftUp')
 }
 function rightDown() {
-
+    socket.emit('rightDown')
 }
 function rightUp() {
-
+    socket.emit('rightUp')
 }
 
 el.addEventListener("touchstart", handleStart, false);
-el.addEventListener("touchend", leftDown, false);
+el.addEventListener("touchstart", leftDown, false);
 el.addEventListener("touchend", handleEnd, false);
 el.addEventListener("touchend", leftUp, false);
 er.addEventListener("touchstart", handleStart, false);
@@ -90,3 +108,5 @@ function calTouch() {
   toppos = 0
   zee = 0
 }
+
+socket.on('event', (data) => console.log(data))

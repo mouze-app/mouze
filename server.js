@@ -7,27 +7,29 @@ import robot from "robotjs"
 const app = express() // Create express app
 const server = http.createServer(app) // Create HTTP server with the Nodejs http lib
 const io = require("socket.io")(server)
-const PORT = process.env.PORT || 3000
-
-// xkcd password
-const xkcdPassword = require("xkcd-password")
-const pw = new xkcdPassword()
-
-const generateCode = () => {
-    pw.generate(function (err, result) {
-        return result.join("-")
-    })
-}
+const PORT = process.env.PORT;
 
 // Socket.io stuff
 io.on('connection', (socket) => {
   console.log('a user connected')
 
-  socket.on('joinRoom', (roomId) => {
-      console.log('someone joined '+roomId);
-      socket.leave(socket.room)
-      socket.join(roomId)
-      socket.emit('event', `You joined ${roomId}`)
+  socket.on('leftDown', (roomId) => {
+      robot.mouseToggle('down', 'left')
+  })
+  socket.on('leftUp', (roomId) => {
+      robot.mouseToggle('up', 'left')
+  })
+  socket.on('rightDown', (roomId) => {
+      robot.mouseToggle('down', 'right')
+  })
+  socket.on('rightUp', (roomId) => {
+      robot.mouseToggle('up', 'right')
+  })
+  socket.on('x', (x) => {
+      robot.moveMouse(x, robot.getMousePos().y)
+  })
+  socket.on('y', (y) => {
+      robot.moveMouse(robot.getMousePos().x, y)
   })
 })
 

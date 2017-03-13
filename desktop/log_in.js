@@ -1,14 +1,8 @@
 // const socket = io.connect("http://mouze.herokuapp.com/")
 const socket = io.connect("http://localhost:5000")
-const form = document.getElementById("id-form")
 
-form.addEventListener("submit", e => {
-    e.preventDefault()
-
-    const idEntered = document.querySelector('form > input').value
-    console.log(`attempting to join ${idEntered}`);
-
-    socket.emit('joinRoom', idEntered)
+socket.on('leftDown', () => {
+    // robot.mouseToggle('down')
+    console.log('left down');
+    alert('mouse down');
 })
-
-socket.on('event', (data) => console.log(data))
