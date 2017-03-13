@@ -1,5 +1,5 @@
-var io = io.connect('http://mouze.herokuapp.com/')
-// var io = io.connect('http://localhost:3000')
+// var io = io.connect('http://mouze.herokuapp.com/')
+var io = io.connect('http://localhost:5000')
 
 var el = document.getElementById("left")
 var er = document.getElementById("right")
@@ -11,6 +11,9 @@ var fls = document.getElementById("flexstart")
 
 var lb = document.getElementById("statusLabel")
 var mouse = document.getElementById("mouse")
+
+let theCode = prompt("What do you want your room code to be?")
+io.emit('joinRoom', theCode)
 
 fl.classList.remove("first")
 fls.classList.add("first")

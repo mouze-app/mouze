@@ -9,6 +9,16 @@ const server = http.createServer(app) // Create HTTP server with the Nodejs http
 const io = require("socket.io")(server)
 const PORT = process.env.PORT || 3000
 
+// xkcd password
+const xkcdPassword = require("xkcd-password")
+const pw = new xkcdPassword()
+
+const generateCode = () => {
+    pw.generate(function (err, result) {
+        return result.join("-")
+    })
+}
+
 // Socket.io stuff
 io.on('connection', (socket) => {
   console.log('a user connected')
@@ -30,6 +40,12 @@ robot.setMouseDelay(2); // Speed up the mouse.
 // Express routes
 app.get('/', (req, res) => {
     res.sendFile(__dirname + '/mobile/mobile.html')
+})
+
+app.get('/new_code', (req, res) => {
+    res.send({
+        code: newCode
+    })
 })
 
 // Start HTTP server

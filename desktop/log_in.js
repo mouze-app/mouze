@@ -1,4 +1,5 @@
-const socket = io.connect("http://mouze.herokuapp.com/")
+// const socket = io.connect("http://mouze.herokuapp.com/")
+const socket = io.connect("http://localhost:5000")
 const form = document.getElementById("id-form")
 
 form.addEventListener("submit", e => {
