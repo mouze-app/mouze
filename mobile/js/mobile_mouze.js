@@ -1,5 +1,5 @@
 // var socket = io.connect('http://mouze.herokuapp.com/')
-var socket = io.connect('http://172.20.10.2:5000')
+var socket = io.connect('http://192.168.0.18:5000')
 
 var userAgent = window.navigator.userAgent;
 var modifier

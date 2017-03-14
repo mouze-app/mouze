@@ -6,24 +6,24 @@
     "author": "Hum4n01d <hum4n01d@icloud.com>",
     "license": "MIT",
     "scripts": {
-        "build": "babel server.js --out-file ./bundled-server.js --presets es2015",
+        "build": "babel server.js --out-file ./build/bundle.js --presets es2015",
         "prestart": "npm run build",
-        "start": "node bundled-server.js",
+        "start": "node build/bundle.js",
 
         "dev-server": "nodemon server.js --exec babel-node --presets es2015",
-        "electron": "electron desktop/desktop_client.js",
+        "electron": "electron desktop/electron_app.js",
         "dev": "yarn dev-server & yarn electron"
     },
     "dependencies": {
-        "babel-preset-es2015": "^6.22.0",
         "electron": "^1.6.2",
         "express": "^4.15.2",
         "robotjs": "^0.4.5",
         "socket.io": "^1.7.3",
-        "xkcd-password": "^2.0.0",
-        "babel-cli": "^6.23.0"
+        "xkcd-password": "^2.0.0"
     },
     "devDependencies": {
-        "nodemon": "^1.11.0"
+        "nodemon": "^1.11.0",
+        "babel-cli": "^6.23.0",
+        "babel-preset-es2015": "^6.22.0"
     }
 }
